@@ -572,7 +572,7 @@
 						if (
 							["Je", "Tu", "Il", "Elle", "On", "Ils", "Elles"].includes(pronoun)
 						) {
-							conjugatedverb = verb[1].slice(-1) + "ç" + suffix;
+							conjugatedverb = verb[1].slice(0, -1) + "ç" + suffix;
 						} else {
 							conjugatedverb = verb[1] + suffix;
 						}
