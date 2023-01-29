@@ -573,11 +573,9 @@
 							document.getElementById("check4").checked,
 						].filter((x) => x == true).length == 0)
 				) {
-					// imparfait
+					console.log("imparfait");
 
 					var verb = imparfait[Math.floor(Math.random() * imparfait.length)];
-					console.log(verb);
-
 					var pronoun;
 					var answer;
 					var suffix;
@@ -641,9 +639,10 @@
 					}
 
 					if (
-						document.getElementById("check5").checked == true &&
-						Math.round(Math.random()) == 0
+						(document.getElementById("check5").checked == true) &&
+						(Math.round(Math.random()) == 0)
 					) {
+						console.log("negation");
 						document.getElementById("question").innerHTML =
 							imparfaitphrases[Math.floor(Math.random()*imparfaitphrases.length)] + 
 							pronoun +
@@ -678,6 +677,7 @@
 								pronoun + " ne " + conjugatedverb + " pas";
 						}
 					} else {
+						console.log("no negation");
 						document.getElementById("question").innerHTML =
 							imparfaitphrases[Math.floor(Math.random()*imparfaitphrases.length)]	+
 							pronoun +
@@ -712,10 +712,9 @@
 							sessionStorage.answer = pronoun + " " + conjugatedverb;
 						}
 					}
-
-					//todo: -cer and -ger exceptions
 				} else {
 					// passe compose
+					console.log("passe compose");
 
 					var l = [];
 
@@ -773,77 +772,11 @@
 
 					var answer = "";
 
-					if (Math.floor(Math.random() * 2) == 0) {
-						// no negation
-						document.getElementById("question").innerHTML =
-							passecomposephrases[Math.floor(Math.random()*passecomposephrases.length)] +
-							pronoun +
-							" (" +
-							verb[1] +
-							")";
-
-						if (verb[3] || document.getElementById("check5").checked == false) {
-							// etre verb
-							switch (pronoun) {
-								case "je":
-									answer += "je suis ";
-									break;
-								case "tu":
-									answer += "tu es ";
-									break;
-								case "il":
-									answer += "il est ";
-									break;
-								case "elle":
-									answer += "elle est ";
-									break;
-								case "on":
-									answer += "on est ";
-									break;
-								case "nous":
-									answer += "nous sommes ";
-									break;
-								case "vous":
-									answer += "vous êtes ";
-									break;
-								case "ils":
-									answer += "ils sont ";
-									break;
-								default:
-									answer += "elles sont ";
-							}
-						} else {
-							// avoir verb
-							switch (pronoun) {
-								case "je":
-									answer += "j'ai ";
-									break;
-								case "tu":
-									answer += "tu as ";
-									break;
-								case "il":
-									answer += "il a ";
-									break;
-								case "elle":
-									answer += "elle a ";
-									break;
-								case "on":
-									answer += "on a ";
-									break;
-								case "nous":
-									answer += "nous avons ";
-									break;
-								case "vous":
-									answer += "vous avez ";
-									break;
-								case "ils":
-									answer += "ils ont ";
-									break;
-								default:
-									answer += "elles ont ";
-							}
-						}
-					} else {
+					if (
+						(document.getElementById("check5").checked == true) &&
+						(Math.round(Math.random()) == 0)
+					) {
+						console.log("negation");
 						// negation
 						document.getElementById("question").innerHTML =
 							passecomposephrases[Math.floor(Math.random()*passecomposephrases.length)] +	
@@ -911,6 +844,77 @@
 									break;
 								default:
 									answer += "elles n'ont pas ";
+							}
+						}
+					} else {
+						console.log("no negation");
+						// no negation
+						document.getElementById("question").innerHTML =
+							passecomposephrases[Math.floor(Math.random()*passecomposephrases.length)] +
+							pronoun +
+							" (" +
+							verb[1] +
+							")";
+
+						if (verb[3] || document.getElementById("check5").checked == false) {
+							// etre verb
+							switch (pronoun) {
+								case "je":
+									answer += "je suis ";
+									break;
+								case "tu":
+									answer += "tu es ";
+									break;
+								case "il":
+									answer += "il est ";
+									break;
+								case "elle":
+									answer += "elle est ";
+									break;
+								case "on":
+									answer += "on est ";
+									break;
+								case "nous":
+									answer += "nous sommes ";
+									break;
+								case "vous":
+									answer += "vous êtes ";
+									break;
+								case "ils":
+									answer += "ils sont ";
+									break;
+								default:
+									answer += "elles sont ";
+							}
+						} else {
+							// avoir verb
+							switch (pronoun) {
+								case "je":
+									answer += "j'ai ";
+									break;
+								case "tu":
+									answer += "tu as ";
+									break;
+								case "il":
+									answer += "il a ";
+									break;
+								case "elle":
+									answer += "elle a ";
+									break;
+								case "on":
+									answer += "on a ";
+									break;
+								case "nous":
+									answer += "nous avons ";
+									break;
+								case "vous":
+									answer += "vous avez ";
+									break;
+								case "ils":
+									answer += "ils ont ";
+									break;
+								default:
+									answer += "elles ont ";
 							}
 						}
 					}
