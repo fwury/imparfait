@@ -463,6 +463,66 @@
 				["aller", "all"],
 			];
 
+			const passecomposephrases = [
+				"Une fois, ",
+				"Deux fois, ",
+				"Plusieurs fois, ",
+				"Soudain, ",
+				"Soudainement, ",
+				"Tous d'un coup, ",
+				"Tous à coup, ",
+				"Le 4 mai, ",
+				"Lundi, ",
+				"Mardi, ",
+				"Mercredi, ",
+				"Jeudi, ",
+				"Vendredi, ",
+				"Samedi, ",
+				"Dimanche, ",
+				"Un matin, ",
+				"Un après-midi, ",
+				"Un soir, ",
+				"Un nuit, ",
+				"Un jour, "
+			];
+
+			const imparfaitphrases = [
+				"Autrefois, ",
+				"Souvent, ",
+				"Toujours, ",
+				"D'habitude, ",
+				"Habituellement, ",
+				"Parfois, ",
+				"Quelquefois, ",
+				"Pendant que …, ",
+				"Chaque semaine, ",
+				"Chaque weekend, ",
+				"Chaque jour, ",
+				"Le matin, ",
+				"L'après-midi, ",
+				"Le soir, ",
+				"Le nuit, ",
+				"Le lundi, ",
+				"Le mardi, ",
+				"Le mercredi, ",
+				"Le jeudi, ",
+				"Le vendredi, ",
+				"Le samedi, ",
+				"Le dimanche, ",
+				"Tous les matins, ",
+				"Tous les après-midis, ",
+				"Tous les soirs, ",
+				"Tous les nuits, ",
+				"Tous les jours, ",
+				"Tous les lundis, ",
+				"Tous les mardis, ",
+				"Tous les mercredis, ",
+				"Tous les jeudis, ",
+				"Tous les vendredis, ",
+				"Tous les samedis, ",
+				"Tous les dimanches, ",
+			]
+
 			document
 				.getElementById("check0")
 				.addEventListener("click", changesettings, false);
@@ -524,37 +584,37 @@
 
 					switch (Math.floor(Math.random() * 9)) {
 						case 0:
-							pronoun = "Je";
+							pronoun = "je";
 							suffix = "ais";
 							break;
 						case 1:
-							pronoun = "Tu";
+							pronoun = "tu";
 							suffix = "ais";
 							break;
 						case 2:
-							pronoun = "Il";
+							pronoun = "il";
 							suffix = "ait";
 							break;
 						case 3:
-							pronoun = "Elle";
+							pronoun = "elle";
 							suffix = "ait";
 							break;
 						case 4:
-							pronoun = "On";
+							pronoun = "on";
 							suffix = "ait";
 						case 5:
-							pronoun = "Nous";
+							pronoun = "nous";
 							suffix = "ions";
 						case 6:
-							pronoun = "Vous";
+							pronoun = "vous";
 							suffix = "iez";
 							break;
 						case 7:
-							pronoun = "Ils";
+							pronoun = "ils";
 							suffix = "aient";
 							break;
 						default:
-							pronoun = "Elles";
+							pronoun = "elles";
 							suffix = "aient";
 					}
 
@@ -562,7 +622,7 @@
 
 					if (verb[0].slice(-3) == "ger") {
 						if (
-							["Je", "Tu", "Il", "Elle", "On", "Ils", "Elles"].includes(pronoun)
+							["je", "tu", "il", "elle", "on", "ils", "elles"].includes(pronoun)
 						) {
 							conjugatedverb = verb[1] + "e" + suffix;
 						} else {
@@ -570,7 +630,7 @@
 						}
 					} else if (verb[0].slice(-3) == "cer") {
 						if (
-							["Je", "Tu", "Il", "Elle", "On", "Ils", "Elles"].includes(pronoun)
+							["je", "tu", "il", "elle", "on", "ils", "elles"].includes(pronoun)
 						) {
 							conjugatedverb = verb[1].slice(0, -1) + "ç" + suffix;
 						} else {
@@ -585,10 +645,11 @@
 						Math.round(Math.random()) == 0
 					) {
 						document.getElementById("question").innerHTML =
+							imparfaitphrases[Math.floor(Math.random()*imparfaitphrases.length)] + 
 							pronoun +
 							" (ne pas " +
-							verb[0] +
-							") <span class='thin'>– Imparfait</span>";
+							verb[0] + 
+							")";
 
 						if (
 							[
@@ -618,13 +679,14 @@
 						}
 					} else {
 						document.getElementById("question").innerHTML =
+							imparfaitphrases[Math.floor(Math.random()*imparfaitphrases.length)]	+
 							pronoun +
 							" (" +
 							verb[0] +
-							") <span class='thin'>– Imparfait</span>";
+							")";
 
 						if (
-							pronoun == "Je" &&
+							pronoun == "je" &&
 							[
 								"a",
 								"e",
@@ -645,7 +707,7 @@
 								"ü",
 							].includes(conjugatedverb[0])
 						) {
-							sessionStorage.answer = "J'" + conjugatedverb;
+							sessionStorage.answer = "j'" + conjugatedverb;
 						} else {
 							sessionStorage.answer = pronoun + " " + conjugatedverb;
 						}
@@ -678,35 +740,35 @@
 
 					switch (Math.floor(Math.random() * 9)) {
 						case 0:
-							pronoun = "Je";
+							pronoun = "je";
 							break;
 						case 1:
-							pronoun = "Tu";
+							pronoun = "tu";
 							break;
 						case 2:
-							pronoun = "Il";
+							pronoun = "il";
 							break;
 						case 3:
 							feminine = true;
-							pronoun = "Elle";
+							pronoun = "elle";
 							break;
 						case 4:
-							pronoun = "On";
+							pronoun = "on";
 						case 5:
 							plural = true;
-							pronoun = "Nous";
+							pronoun = "nous";
 						case 6:
 							plural = true;
-							pronoun = "Vous";
+							pronoun = "vous";
 							break;
 						case 7:
 							plural = true;
-							pronoun = "Ils";
+							pronoun = "ils";
 							break;
 						default:
 							feminine = true;
 							plural = true;
-							pronoun = "Elles";
+							pronoun = "elles";
 					}
 
 					var answer = "";
@@ -714,140 +776,141 @@
 					if (Math.floor(Math.random() * 2) == 0) {
 						// no negation
 						document.getElementById("question").innerHTML =
+							passecomposephrases[Math.floor(Math.random()*passecomposephrases.length)] +
 							pronoun +
 							" (" +
 							verb[1] +
-							") <span class='thin'>– Passé Composé</span>";
+							")";
 
 						if (verb[3] || document.getElementById("check5").checked == false) {
 							// etre verb
 							switch (pronoun) {
-								case "Je":
-									answer += "Je suis ";
+								case "je":
+									answer += "je suis ";
 									break;
-								case "Tu":
-									answer += "Tu es ";
+								case "tu":
+									answer += "tu es ";
 									break;
-								case "Il":
-									answer += "Il est ";
+								case "il":
+									answer += "il est ";
 									break;
-								case "Elle":
-									answer += "Elle est ";
+								case "elle":
+									answer += "elle est ";
 									break;
-								case "On":
-									answer += "On est ";
+								case "on":
+									answer += "on est ";
 									break;
-								case "Nous":
-									answer += "Nous sommes ";
+								case "nous":
+									answer += "nous sommes ";
 									break;
-								case "Vous":
-									answer += "Vous êtes ";
+								case "vous":
+									answer += "vous êtes ";
 									break;
-								case "Ils":
-									answer += "Ils sont ";
+								case "ils":
+									answer += "ils sont ";
 									break;
 								default:
-									answer += "Elles sont ";
+									answer += "elles sont ";
 							}
 						} else {
 							// avoir verb
 							switch (pronoun) {
-								case "Je":
-									answer += "J'ai ";
+								case "je":
+									answer += "j'ai ";
 									break;
-								case "Tu":
-									answer += "Tu as ";
+								case "tu":
+									answer += "tu as ";
 									break;
-								case "Il":
-									answer += "Il a ";
+								case "il":
+									answer += "il a ";
 									break;
-								case "Elle":
-									answer += "Elle a ";
+								case "elle":
+									answer += "elle a ";
 									break;
-								case "On":
-									answer += "On a ";
+								case "on":
+									answer += "on a ";
 									break;
-								case "Nous":
-									answer += "Nous avons ";
+								case "nous":
+									answer += "nous avons ";
 									break;
-								case "Vous":
-									answer += "Vous avez ";
+								case "vous":
+									answer += "vous avez ";
 									break;
-								case "Ils":
-									answer += "Ils ont ";
+								case "ils":
+									answer += "ils ont ";
 									break;
 								default:
-									answer += "Elles ont ";
+									answer += "elles ont ";
 							}
 						}
 					} else {
 						// negation
 						document.getElementById("question").innerHTML =
+							passecomposephrases[Math.floor(Math.random()*passecomposephrases.length)] +	
 							pronoun +
 							" (ne pas " +
 							verb[1] +
-							")" +
-							" <span class='thin'>– Passé Composé</span>";
+							")";
 
 						if (verb[3]) {
 							// etre verb
 							switch (pronoun) {
-								case "Je":
-									answer += "Je ne suis pas ";
+								case "je":
+									answer += "je ne suis pas ";
 									break;
-								case "Tu":
-									answer += "Tu n'es pas ";
+								case "tu":
+									answer += "tu n'es pas ";
 									break;
-								case "Il":
-									answer += "Il n'est pas ";
+								case "il":
+									answer += "il n'est pas ";
 									break;
-								case "Elle":
-									answer += "Elle n'est pas ";
+								case "elle":
+									answer += "elle n'est pas ";
 									break;
-								case "On":
-									answer += "On n'est pas ";
+								case "on":
+									answer += "on n'est pas ";
 									break;
-								case "Nous":
-									answer += "Nous ne sommes pas ";
+								case "nous":
+									answer += "nous ne sommes pas ";
 									break;
-								case "Vous":
-									answer += "Vous n'êtes pas ";
+								case "vous":
+									answer += "vous n'êtes pas ";
 									break;
-								case "Ils":
-									answer += "Ils ne sont pas ";
+								case "ils":
+									answer += "ils ne sont pas ";
 									break;
 								default:
-									answer += "Elles ne sont pas ";
+									answer += "elles ne sont pas ";
 							}
 						} else {
 							// avoir verb
 							switch (pronoun) {
-								case "Je":
-									answer += "Je n'ai pas ";
+								case "je":
+									answer += "je n'ai pas ";
 									break;
-								case "Tu":
-									answer += "Tu n'as pas ";
+								case "tu":
+									answer += "tu n'as pas ";
 									break;
-								case "Il":
-									answer += "Il n'a pas ";
+								case "il":
+									answer += "il n'a pas ";
 									break;
-								case "Elle":
-									answer += "Elle n'a pas ";
+								case "elle":
+									answer += "elle n'a pas ";
 									break;
-								case "On":
-									answer += "On n'a pas ";
+								case "on":
+									answer += "on n'a pas ";
 									break;
-								case "Nous":
-									answer += "Nous n'avons pas ";
+								case "nous":
+									answer += "nous n'avons pas ";
 									break;
-								case "Vous":
-									answer += "Vous n'avez pas ";
+								case "vous":
+									answer += "vous n'avez pas ";
 									break;
-								case "Ils":
-									answer += "Ils n'ont pas ";
+								case "ils":
+									answer += "ils n'ont pas ";
 									break;
 								default:
-									answer += "Elles n'ont pas ";
+									answer += "elles n'ont pas ";
 							}
 						}
 					}
@@ -873,7 +936,7 @@
 				if (e.keyCode == 13) {
 					// check answer
 					if (
-						document.getElementById("answer").value == sessionStorage.answer
+						document.getElementById("answer").value.toLowerCase() == sessionStorage.answer
 					) {
 						document.getElementById("answer").style.color = "lightgreen";
 						document.getElementById("answer").readOnly = true;
