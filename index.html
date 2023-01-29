@@ -731,7 +731,6 @@
 						l = l.concat(irregularetre);
 					}
 					var verb = l[Math.floor(Math.random() * l.length)];
-					console.log(verb);
 
 					var pronoun;
 					var feminine = false;
@@ -856,7 +855,7 @@
 							verb[1] +
 							")";
 
-						if (verb[3] || document.getElementById("check5").checked == false) {
+						if (verb[3]) {
 							// etre verb
 							switch (pronoun) {
 								case "je":
